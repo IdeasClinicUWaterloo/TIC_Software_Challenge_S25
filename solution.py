@@ -31,8 +31,6 @@ if challengeLevel <= 2:
 
 try:
     if challengeLevel == 0:
-        control.start_keyboard_input()
-        control.start_keyboard_control()
         while rclpy.ok():
             rclpy.spin_once(robot, timeout_sec=0.1)
             time.sleep(0.1)
@@ -46,7 +44,6 @@ try:
             # Write your solution here for challenge level 1
             # It is recommended you use functions for aspects of the challenge that will be resused in later challenges
             # For example, create a function that will detect if the robot is too close to a wall
-            print(lidar.checkScan())
 
     if challengeLevel == 2:
         min_box_size = 8
@@ -65,8 +62,6 @@ try:
                 control.set_cmd_vel(0,0,3)
                 control.start_keyboard_control
             time.sleep(0.1)
-    
-
             
     if challengeLevel == 3:
         tag_instructions = {
