@@ -49,7 +49,19 @@ try:
             print(lidar.checkScan())
 
     if challengeLevel == 2:
+        required_size = 200
         while rclpy.ok():
+            camera.checkImage()
+            ML_output = camera.ML_predict_stop_sign(camera.rosImg_to_cv2())
+            print(ML_output)
+
+
+          #  if detect == True and (math.sqrt((x2 - x1)^2 + (y2 - y1)^2) > required_size):
+          #     control.stop_keyboard_control()
+          #      time.sleep(3)
+          #      control.start_keyboard_control()
+        
+                
             rclpy.spin_once(robot, timeout_sec=0.1)
             time.sleep(0.1)
             # Write your solution here for challenge level 2
