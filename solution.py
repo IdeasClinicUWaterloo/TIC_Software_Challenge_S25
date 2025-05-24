@@ -52,17 +52,30 @@ try:
         min_box_size = 8
         while rclpy.ok():
             # Write your solution here for challenge level 2
-            camera.checkImage()
             (detected, x1, y1, x2, y2) = camera.ML_predict_stop_sign(camera.rosImg_to_cv2())
             box_size = math.sqrt((x2 - x1)^2 + (y2 - y1)^2)
             if(detected == True and box_size > min_box_size):
                 control.stop_keyboard_control
                 time.sleep(3)
                 control.start_keyboard_control
+            time.sleep(0.1)
     
 
             
     if challengeLevel == 3:
+        tag_instructions = {
+            "tag1": (45, 1),
+            "tag2": (45, 1),
+            "tag3": (45, 1)
+        }
+        (tag_id, range, bearing, elevation) = camera.estimate_apriltag_pose(camera.rosImg_to_cv2)
+        (angle, direction) = tag_instructions.get(tag_id)
+        control.rotate(angle, direction)
+
+        
+
+
+
         while rclpy.ok():
             rclpy.spin_once(robot, timeout_sec=0.1)
             time.sleep(0.1)
