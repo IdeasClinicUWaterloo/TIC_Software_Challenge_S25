@@ -49,20 +49,16 @@ try:
             print(lidar.checkScan())
 
     if challengeLevel == 2:
-        max_box_size = 14
+        min_box_size = 8
         while rclpy.ok():
             # Write your solution here for challenge level 2
-
             camera.checkImage()
             (detected, x1, y1, x2, y2) = camera.ML_predict_stop_sign(camera.rosImg_to_cv2())
-            print((detected, x1, y1, x2, y2))
-            print(math.sqrt((x2 - x1)^2 + (y2 - y1)^2))
-
-
-          #  if detect == True and (math.sqrt((x2 - x1)^2 + (y2 - y1)^2) > required_size):
-          #     control.stop_keyboard_control()
-          #      time.sleep(3)
-          #      control.start_keyboard_control()
+            box_size = math.sqrt((x2 - x1)^2 + (y2 - y1)^2)
+            if(detected == True and box_size > min_box_size):
+                control.stop_keyboard_control
+                time.sleep(3)
+                control.start_keyboard_control
     
 
             
