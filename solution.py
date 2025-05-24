@@ -56,8 +56,10 @@ try:
             (detected, x1, y1, x2, y2) = camera.ML_predict_stop_sign(camera.rosImg_to_cv2())
             box_size = math.sqrt((x2 - x1)^2 + (y2 - y1)^2)
             if (detected == False):
+                print("Reseting stopping flag")
                 flag = True
             if(detected == True and box_size > min_box_size and flag == True):
+                print("Detected stop sign, stopping for 3 seconds")
                 flag = False
                 control.stop_keyboard_control
                 control.set_cmd_vel(0,0,3)

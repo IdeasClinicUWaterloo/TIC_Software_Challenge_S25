@@ -13,7 +13,7 @@ import rclpy.qos
 from copy import copy
 
 class Robot(Node):
-    def __init__(self, IS_SIM : bool = True, DEBUG : bool = False, TAG_SIZE : float = 0.25, CONST_speed_control : float = 1.0):
+    def __init__(self, IS_SIM : bool = True, DEBUG : bool = False, TAG_SIZE : float = 0.25, CONST_speed_control : float = 0.4):
         ''' Set up the ros2 node for all the subscribers needed in the challenge as well as run use_hardware when IS_SIM is False. '''
         # Set constants 
         self.IS_SIM = IS_SIM
