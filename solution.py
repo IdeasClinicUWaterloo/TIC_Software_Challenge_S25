@@ -54,8 +54,9 @@ try:
             # Write your solution here for challenge level 2
 
             camera.checkImage()
-            ML_output = camera.ML_predict_stop_sign(camera.rosImg_to_cv2())
-            print(ML_output)
+            (detected, x1, x2, y1, y2) = camera.ML_predict_stop_sign(camera.rosImg_to_cv2())
+            print((detected, x1, x2, y1, y2))
+            print(math.sqrt((x2 - x1)^2 + (y2 - y1)^2))
 
 
           #  if detect == True and (math.sqrt((x2 - x1)^2 + (y2 - y1)^2) > required_size):
