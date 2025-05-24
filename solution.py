@@ -6,7 +6,7 @@ import time
 from ultralytics import YOLO
 
 # Variable for controlling which level of the challenge to test -- set to 0 for pure keyboard control
-challengeLevel = 0
+challengeLevel = 2
 
 # Set to True if you want to run the simulation, False if you want to run on the real robot
 is_SIM = True
@@ -51,6 +51,8 @@ try:
     if challengeLevel == 2:
         required_size = 200
         while rclpy.ok():
+            # Write your solution here for challenge level 2
+
             camera.checkImage()
             ML_output = camera.ML_predict_stop_sign(camera.rosImg_to_cv2())
             print(ML_output)
@@ -60,11 +62,8 @@ try:
           #     control.stop_keyboard_control()
           #      time.sleep(3)
           #      control.start_keyboard_control()
-        
-                
-            rclpy.spin_once(robot, timeout_sec=0.1)
-            time.sleep(0.1)
-            # Write your solution here for challenge level 2
+    
+
             
     if challengeLevel == 3:
         while rclpy.ok():
