@@ -35,6 +35,8 @@ try:
             rclpy.spin_once(robot, timeout_sec=0.1)
             time.sleep(0.1)
             # Challenge 0 is pure keyboard control, you do not need to change this it is just for your own testing
+            control.start_keyboard_input()
+            control.start_keyboard_control()
 
     if challengeLevel == 1:
         while rclpy.ok():
